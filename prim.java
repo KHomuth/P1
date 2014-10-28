@@ -1,6 +1,11 @@
-import java.util.*;
+//orieentiert an: 
+//http://learntech.rwth-aachen.de/projekte/loop/aufgaben/chrisp/inf1tudhs/inf1uebung04/primzahltest/lsg/Primzahltest.java.html
 
-public class prim{
+import java.io.*;
+import java.util.*;
+import java.lang.Math;
+
+public class prim1{
 	
 	public static void main(String[] args){
 
@@ -9,21 +14,28 @@ public class prim{
 		Scanner a = new Scanner(System.in);
 		long x = a.nextLong();
 
+		boolean isprime;
+
 
 	long startMilliSeconds = System.currentTimeMillis();
 
-	if(x<2)
-		System.out.println("Die Zahl ist nicht prim.");
-
-	if(x==2)
-		System.out.println("Die Zahl ist prim.");
-
-	for (long y=2; y<=x-1; y++){
-		if(x%y==0)
-			System.out.println("Die Zahl ist nicht prim.");
-		else
-			System.out.println("Die Zahl ist prim.");
+	if(x==1){
+		isprime = false;
 	}
+	else{
+		isprime = true;
+		for(long y=2; y<=Math.sqrt(x); y++){
+			if(x%y==0){
+				isprime = false;
+				break;
+			}
+		}
+	}
+
+	if(isprime == false)
+		System.out.println("Die Zahl ist nicht prim.");
+	else
+		System.out.println("Die Zahl ist prim.");
 	
 
 	long endMilliSeconds = System.currentTimeMillis();
